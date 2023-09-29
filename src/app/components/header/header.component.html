@@ -1,18 +1,28 @@
-<div class="flex flex-row w-full justify-between items-center px-24 gap-x-48 py-4 font-raleway shadow-xl shadow-black/50 drop-shadow-sm">
+<div class="flex flex-row w-full justify-between items-center px-4 lg:px-24 gap-x-48 py-4 font-raleway shadow-xl shadow-black/50 drop-shadow-sm">
     <img src="assets/img/logo/logo.png" alt="logo" class="w-12 h-12">
-    <div class="flex flex-row w-full">
-        <div class="flex flex-row gap-x-16 w-full items-center">
-            <p class="text-xl">Inicio</p>
-            <p class="text-xl">Buscar Eventos</p>
-            <p class="text-xl">Foro</p>
+    <div class="hidden lg:flex flex-row w-full">
+        <div class="lg:flex flex-row gap-x-16 w-full items-center">
+            <p class="text-xl cursor-pointer">Inicio</p>
+            <p class="text-xl cursor-pointer">Buscar Eventos</p>
+            <p class="text-xl cursor-pointer">Foro</p>
         </div>
-        <div class="flex flex-row gap-x-8 w-full justify-end items-center">
-            <button class="bg-uni-blue hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+        <div class="lg:flex flex-row gap-x-8 w-full justify-end items-center">
+            <button class="bg-uni-blue hover:bg-white hover:text-black text-white font-bold py-2 px-4 rounded">
                 Iniciar sesión
             </button>
-            <button class="border border-uni-blue hover:bg-blue-700 text-black font-bold py-2 px-4 rounded">
+            <button class="border border-uni-blue hover:bg-white text-black font-bold py-2 px-4 rounded">
                 Registrarse
             </button>
         </div>
+    </div>
+    <div class="w-full flex relative lg:hidden justify-end">
+        <ng-icon size="32px" name="heroBars3" (click)="setDropdown()"></ng-icon>
+        <div *ngIf="openDropdown" class="absolute top-8 bg-black rounded-md">
+            <div *ngFor="let item of dropdownOptions" class="hover:bg-white/50 flex flex-col w-full">
+                <p class="text-base text-white px-6">{{item}}</p>
+            </div>
+
+        </div>
+
     </div>
 </div>
