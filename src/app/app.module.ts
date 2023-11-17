@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { NgIconComponent } from '@ng-icons/core';
 import { EventCardComponent } from './components/event-card/event-card.component';
+import { AuthModule } from './auth/auth.module';
 
 @NgModule({
   declarations: [
@@ -14,9 +15,10 @@ import { EventCardComponent } from './components/event-card/event-card.component
   ],
   imports: [
     BrowserModule,
-    [NgIconComponent]
+    NgIconComponent,
+    AuthModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }
