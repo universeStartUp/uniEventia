@@ -6,6 +6,8 @@ import { HeaderComponent } from './components/header/header.component';
 import { NgIconComponent } from '@ng-icons/core';
 import { EventCardComponent } from './components/event-card/event-card.component';
 import { RegisterComponent } from './components/register/register.component';
+// Import HttpClientModule
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -16,6 +18,7 @@ import { RegisterComponent } from './components/register/register.component';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     [NgIconComponent]
   ],
   providers: [],

@@ -22,7 +22,7 @@ export class EventService {
   constructor(private http: HttpClient) {}
 
   getAllEvents() {
-    return this.http.get<Event[]>(this.apiUrl + this.apiUrl + '/all', {
+    return this.http.get<Event[]>(this.apiUrl + this.apiURL + '/all', {
       headers: this.headers,
     });
   }
