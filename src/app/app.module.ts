@@ -8,6 +8,7 @@ import { EventCardComponent } from './components/event-card/event-card.component
 import { RegisterComponent } from './components/register/register.component';
 // Import HttpClientModule
 import { HttpClientModule } from '@angular/common/http';
+import { AuthModule } from './auth/auth.module';
 
 @NgModule({
   declarations: [
@@ -19,9 +20,11 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     BrowserModule,
     HttpClientModule,
-    [NgIconComponent]
+    [NgIconComponent],
+    NgIconComponent,
+    AuthModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }
