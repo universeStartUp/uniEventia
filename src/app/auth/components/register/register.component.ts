@@ -1,35 +1,38 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
-import { ILogInCredentials } from '../../interfaces/auth.interface'; // Assume you have this interface defined
-import { ReactiveFormsModule } from '@angular/forms'; // Import ReactiveFormsModule
+import { IRegisterPayload } from '../../interfaces/auth.interface'; // Assume you have this interface defined
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-log-in',
-  templateUrl: './log-in.component.html',
+  selector: 'app-register',
+  templateUrl: './register.component.html',
 })
-export class LogInComponent implements OnInit {
-  loginForm!: FormGroup;
+
+export class RegisterComponent implements OnInit {
+  registerForm!: FormGroup; // Use the non-null assertion operator
 
   constructor(private authService: AuthService, private formBuilder: FormBuilder, private router : Router) {}
 
   ngOnInit(): void {
-    this.loginForm = this.formBuilder.group({
+    this.registerForm = this.formBuilder.group({
+      surname: ['', Validators.required],
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
+      studentCode: ['', Validators.required],
       emailAddress: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(4)]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
     });
   }
 
   onSubmit() {
-    this.markAllAsTouched(this.loginForm);
+    this.markAllAsTouched(this.registerForm);
 
-    if (this.loginForm.valid) {
-      const payload: ILogInCredentials = this.loginForm.value;
-      this.authService.login(payload).subscribe({
+    if (this.registerForm.valid) {
+      const payload: IRegisterPayload = this.registerForm.value;
+      this.authService.register(payload).subscribe({
         next: (response) => {   
-          localStorage.setItem('token', response.token);
           this.router.navigate(['/']);
         },
         error: (error) => {

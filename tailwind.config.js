@@ -11,6 +11,7 @@ module.exports = {
       },
       colors: {
         'uni-blue' : '#2968E5',
+        'uni-green' : '#00A651',
         pink: {
           '300': '#ff9a8b',
           '500': '#ff6b6b',

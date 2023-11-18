@@ -1,0 +1,63 @@
+<!-- register.component.html -->
+<main class="h-screen w-auto flex flex-row bg-gradient-to-tr from-uni-blue to-white">
+    <div class="w-3/5 flex bg-white items-center justify-center h-full">
+        <img src="assets/svg/auth.svg" alt="Register to Unieventia" class="w-5/6 h-auto self-end">
+    </div>
+    <div class="w-2/5 flex flex-col h-auto items-center justify-center px-24">
+        <h2 class="text-2xl text-black font-poppins font-bold self-start">Registrate en UniEventia!</h2>
+        <h3 class="text-gray-500 mb-2 font-poppins self-start">Como comienzo en UniEventia?</h3>
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="flex flex-col w-full font-poppins">
+            <!-- Surname Field -->
+            <div class="mb-4 w-full flex flex-col">
+                <label for="surname" class="block text-black font-semibold">Surname</label>
+                <input type="text" id="surname" formControlName="surname"
+                    [class]="{'border-red-500': registerForm.get('surname')?.invalid && registerForm.get('surname')?.touched}"
+                    class="border rounded-md px-3 py-2"
+                    [placeholder]="registerForm.get('surname')?.invalid && registerForm.get('surname')?.touched ? 'Surname is required' : 'Surname'">
+            </div>
+            <!-- First Name Field -->
+            <div class="mb-4 w-full flex flex-col">
+                <label for="firstName" class="block text-black font-semibold">Nombre</label>
+                <input type="text" id="firstName" formControlName="firstName"
+                    [class]="{'border-red-500': registerForm.get('firstName')?.invalid && registerForm.get('firstName')?.touched}"
+                    class="border rounded-md px-3 py-2"
+                    [placeholder]="registerForm.get('firstName')?.invalid && registerForm.get('firstName')?.touched ? 'First name is required' : 'Nombre'">
+            </div>
+            <!-- Last Name Field -->
+            <div class="mb-4 w-full flex flex-col">
+                <label for="lastName" class="block text-black font-semibold">Apellido</label>
+                <input type="text" id="lastName" formControlName="lastName"
+                    [class]="{'border-red-500': registerForm.get('lastName')?.invalid && registerForm.get('lastName')?.touched}"
+                    class="border rounded-md px-3 py-2"
+                    [placeholder]="registerForm.get('lastName')?.invalid && registerForm.get('lastName')?.touched ? 'Last name is required' : 'Apellido'">
+            </div>
+            <!-- Student Code Field -->
+            <div class="mb-4 w-full flex flex-col">
+                <label for="studentCode" class="block text-black font-semibold">Código de alumno</label>
+                <input type="text" id="studentCode" formControlName="studentCode"
+                    [class]="{'border-red-500': registerForm.get('studentCode')?.invalid && registerForm.get('studentCode')?.touched}"
+                    class="border rounded-md px-3 py-2"
+                    [placeholder]="registerForm.get('studentCode')?.invalid && registerForm.get('studentCode')?.touched ? 'Student code is required' : 'Código de alumno'">
+            </div>
+            <!-- Email Address Field -->
+            <div class="mb-4 w-full flex flex-col">
+                <label for="emailAddress" class="block text-black font-semibold">Email</label>
+                <input type="email" id="emailAddress" formControlName="emailAddress"
+                    [class]="{'border-red-500': registerForm.get('emailAddress')?.invalid && registerForm.get('emailAddress')?.touched}"
+                    class="border rounded-md px-3 py-2"
+                    [placeholder]="registerForm.get('emailAddress')?.invalid && registerForm.get('emailAddress')?.touched ? 'Email is required' : 'Email'">
+            </div>
+            <!-- Password Field -->
+            <div class="mb-4 w-full flex flex-col">
+                <label for="password" class="block text-black font-semibold">Contraseña</label>
+                <input type="password" id="password" formControlName="password"
+                    [class]="{'border-red-500': registerForm.get('password')?.invalid && registerForm.get('password')?.touched}"
+                    class="border rounded-md px-3 py-2"
+                    [placeholder]="registerForm.get('password')?.invalid && registerForm.get('password')?.touched ? 'Password is required' : 'Contraseña'">
+            </div>
+            <!-- Submit Button -->
+            <button type="submit"
+                class="bg-uni-blue hover:bg-uni-green shadow shadow-black/50 text-white px-4 py-2 rounded-md">Registrarse</button>
+        </form>
+    </div>
+</main>

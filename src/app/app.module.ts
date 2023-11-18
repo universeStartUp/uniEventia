@@ -5,24 +5,24 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { NgIconComponent } from '@ng-icons/core';
 import { EventCardComponent } from './components/event-card/event-card.component';
-import { RegisterComponent } from './components/register/register.component';
-// Import HttpClientModule
 import { HttpClientModule } from '@angular/common/http';
-import { AuthModule } from './auth/auth.module';
+import { AppRoutingModule } from './app-routing.module';
+import { HomePageComponent } from './components/home-page/home-page.component';
+import {ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     EventCardComponent,
-    RegisterComponent,
+    HomePageComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    [NgIconComponent],
     NgIconComponent,
-    AuthModule,
+    AppRoutingModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
