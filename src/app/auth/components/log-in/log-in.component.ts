@@ -30,6 +30,7 @@ export class LogInComponent implements OnInit {
       this.authService.login(payload).subscribe({
         next: (response) => {   
           localStorage.setItem('token', response.token);
+          localStorage.setItem('user', JSON.stringify(response.userDto));
           this.router.navigate(['/']);
         },
         error: (error) => {
