@@ -1,10 +1,10 @@
 import { Component, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
-import { EventService } from 'src/app/service/event.service';
-import { IEvent } from 'src/app/interfaces/event';
-import { IDistrict } from 'src/app/interfaces/district';
-import { IEventCategory } from 'src/app/interfaces/eventCategory';
-import { IEventState } from 'src/app/interfaces/eventState';
+import { EventService } from 'src/app/events/service/event.service';
+import { IEvent } from 'src/app/events/interfaces/event';
+import { IDistrict } from 'src/app/events/interfaces/district';
+import { IEventCategory } from 'src/app/events/interfaces/eventCategory';
+import { IEventState } from 'src/app/events/interfaces/eventState';
 
 @Component({
   selector: 'app-events',

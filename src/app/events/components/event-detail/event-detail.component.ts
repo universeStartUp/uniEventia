@@ -1,6 +1,6 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
-import { IEvent } from 'src/app/interfaces/event';
-import { EventService } from 'src/app/service/event.service';
+import { IEvent } from 'src/app/events/interfaces/event';
+import { EventService } from 'src/app/events/service/event.service';
 import { ActivatedRoute } from '@angular/router';
 
 declare var google: any;

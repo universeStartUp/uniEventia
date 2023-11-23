@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 
-import { IEvent } from 'src/app/interfaces/event';
+import { IEvent } from 'src/app/events/interfaces/event';
 import { Router } from '@angular/router';
 
 @Component({
