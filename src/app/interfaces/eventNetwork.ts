@@ -1,4 +1,4 @@
-export interface EventNetwork {
+export interface IEventNetwork {
   id: number;
   twitterURL: string;
   facebookURL: string;

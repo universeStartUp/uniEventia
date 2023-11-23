@@ -3,6 +3,7 @@ import { provideIcons } from '@ng-icons/core';
 import { heroStarSolid } from '@ng-icons/heroicons/solid';
 import { EventInterface } from '../../interfaces/event.interface';
 import { EventService } from '../../service/event.service';
+import { IEvent } from 'src/app/interfaces/event';
 
 @Component({
   selector: 'app-home-page',
@@ -11,11 +12,18 @@ import { EventService } from '../../service/event.service';
 })
 export class HomePageComponent {
   constructor (private eventService : EventService) {}
+  events : IEvent[] = [];
+  loggedIn : boolean = false;
 
   ngOnInit(): void {
     this.eventService.getAllEvents().subscribe((events) => {
-      console.log(events);
+      this.events = events;
     });
+    if (localStorage.getItem('user')) {
+      this.loggedIn = true;
+    } else {
+      this.loggedIn = false;
+    }
   }
   
   eventos : EventInterface[] = [

@@ -1,4 +1,4 @@
-export interface DateRequestDTO{
+export interface IDateRequestDTO{
   "beginDate": string,
   "endDate": string
 

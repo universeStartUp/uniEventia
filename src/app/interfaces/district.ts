@@ -1,7 +1,7 @@
-import {Department} from "./department";
+import {IDepartment} from "./department";
 
-export interface District{
+export interface IDistrict{
     id: number;
     name: string;
-    departmentId: Department
+    departmentId: IDepartment
 }

@@ -1,7 +1,7 @@
-import {District} from "./district";
+import {IDistrict} from "./district";
 
-export interface Location{
+export interface ILocation{
   id: number;
   address: string;
-  district: District;
+  district: IDistrict;
 }

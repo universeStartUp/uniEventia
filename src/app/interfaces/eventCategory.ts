@@ -1,4 +1,4 @@
-export interface EventCategory{
+export interface IEventCategory{
     id: number;
     name: string;
 }

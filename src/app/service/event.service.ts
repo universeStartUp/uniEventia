@@ -2,9 +2,9 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment.prod';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-import { Event } from '../interfaces/event';
-import { DateRequestDTO } from '../interfaces/dateRequestDTO';
-import { EventCategory } from '../interfaces/eventCategory';
+import { IEvent } from '../interfaces/event';
+import { IDateRequestDTO } from '../interfaces/dateRequestDTO';
+import { IEventCategory } from '../interfaces/eventCategory';
 import { EventStateEnum } from '../interfaces/eventState.enum';
 
 @Injectable({
@@ -22,41 +22,41 @@ export class EventService {
   constructor(private http: HttpClient) {}
 
   getAllEvents() {
-    return this.http.get<Event[]>(this.apiUrl + this.apiURL + '/all', {
+    return this.http.get<IEvent[]>(this.apiUrl + this.apiURL + '/all', {
       headers: this.headers,
     });
   }
 
   getEventById(id: number) {
-    return this.http.get<Event>(this.apiUrl + this.apiURL + '/get/id/' + id, {
+    return this.http.get<IEvent>(this.apiUrl + this.apiURL + '/get/id/' + id, {
       headers: this.headers,
     });
   }
 
   getEventByTitle(title: string) {
-    return this.http.get<Event>(
+    return this.http.get<IEvent>(
       this.apiUrl + this.apiURL + '/get/title/' + title,
       { headers: this.headers },
     );
   }
 
-  getEventByDate(dateRequestDTO: DateRequestDTO) {
-    return this.http.post<Event[]>(
+  getEventByDate(dateRequestDTO: IDateRequestDTO) {
+    return this.http.post<IEvent[]>(
       this.apiUrl + this.apiURL + '/get/date',
       dateRequestDTO,
       { headers: this.headers },
     );
   }
 
-  getEventByCategory(categories: EventCategory[]) {
-    return this.http.post<Event[]>(
+  getEventByCategory(categories: IEventCategory[]) {
+    return this.http.post<IEvent[]>(
       this.apiUrl + this.apiURL + '/get/category',
       categories,
       { headers: this.headers },
     );
   }
   getEventByState(state: string) {
-    return this.http.get<Event[]>(
+    return this.http.get<IEvent[]>(
       this.apiUrl + this.apiURL + '/get/state/' + state,
       { headers: this.headers },
     );

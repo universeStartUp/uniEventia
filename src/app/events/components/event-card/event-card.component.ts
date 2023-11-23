@@ -9,6 +9,6 @@ import { heroCalendarSolid } from '@ng-icons/heroicons/solid';
 export class EventCardComponent {
   @Input() title: string = '';
   @Input() date: string = '';
-  @Input() price: string = '';
+  @Input() price?: string = '';
   @Input() image: string = '';
 }

@@ -1,4 +1,4 @@
-export interface LocationRequestDTO {
+export interface ILocationRequestDTO {
   id: number;
   address: string;
   district: {

@@ -1,4 +1,4 @@
-export interface EventState {
+export interface IEventState {
   id: number;
   name: string;
 }
