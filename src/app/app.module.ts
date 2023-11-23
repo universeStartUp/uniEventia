@@ -7,14 +7,14 @@ import { NgIconComponent } from '@ng-icons/core';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { HomePageComponent } from './components/home-page/home-page.component';
-import {ReactiveFormsModule} from '@angular/forms';
+import { ReactiveFormsModule} from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EventModule } from './events/event.module';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
     HomePageComponent,
   ],
   imports: [
@@ -24,7 +24,8 @@ import { EventModule } from './events/event.module';
     AppRoutingModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    EventModule
+    EventModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent],

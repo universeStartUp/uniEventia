@@ -19,24 +19,32 @@ export class EventService {
     Authorization: 'Bearer ' + localStorage.getItem('token'),
   });
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   getAllEvents() {
     return this.http.get<IEvent[]>(this.apiUrl + this.apiURL + '/all', {
-      headers: this.headers,
+      headers: {
+        Authorization: 'Bearer ' + localStorage.getItem('token'),
+      },
     });
   }
 
   getEventById(id: number) {
     return this.http.get<IEvent>(this.apiUrl + this.apiURL + '/get/id/' + id, {
-      headers: this.headers,
+      headers: {
+        Authorization: 'Bearer ' + localStorage.getItem('token'),
+      },
     });
   }
 
   getEventByTitle(title: string) {
     return this.http.get<IEvent>(
       this.apiUrl + this.apiURL + '/get/title/' + title,
-      { headers: this.headers },
+      {
+        headers: {
+          Authorization: 'Bearer ' + localStorage.getItem('token'),
+        }
+      },
     );
   }
 

@@ -8,10 +8,21 @@
 }
 
 .snackbar-error {
-    background-color: #d32f2f; /* Color de fondo rojo */
-    color: white; /* Color del texto blanco */
+    background-color: #d32f2f;
+    /* Color de fondo rojo */
+    color: white;
+    /* Color del texto blanco */
 }
-  
+
 /*html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 */
+
+
+.mat-mdc-paginator-outer-container {
+    background-color: transparent !important;
+}
+
+.mat-mdc-paginator {
+    background-color: transparent !important;
+}

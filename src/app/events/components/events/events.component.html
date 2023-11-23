@@ -1,15 +1,66 @@
 <main class="bg-gradient-to-br from-white to-uni-blue h-full w-full">
+    <app-header></app-header>
     <div class="flex flex-col w-full px-10 py-4 gap-y-2">
         <div class="flex flex-row w-full items-center justify-start gap-x-4">
-            <p class="text-base lg:text-2xl font-bold text-center text-black font-poppins">Eventos Destacados</p>
-        </div>
-        <div *ngIf="!loggedIn" class="flex flex-col gap-y-8 lg:grid lg:grid-cols-4 w-full gap-x-16">
-            <app-event-card *ngFor="let event of eventos" [title]="event.title" [date]="event.date"
-                [price]="event.price" [image]="event.image"></app-event-card>
+            <!-- Name Filter -->
+            <mat-form-field appearance="fill">
+                <mat-label>Buscar por nombre</mat-label>
+                <input matInput [(ngModel)]="filters.title" (ngModelChange)="applyFilters()" placeholder="Nombre del evento">
+            </mat-form-field>
+
+            <!-- Category Filter -->
+            <mat-form-field appearance="fill">
+                <mat-label>Categoría</mat-label>
+                <mat-select [(ngModel)]="filters.category" (ngModelChange)="applyFilters()">
+                    <mat-option *ngFor="let category of categories" [value]="category.name">
+                        {{ category.name }}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <!-- Department Filter -->
+            <mat-form-field appearance="fill">
+                <mat-label>Departamento</mat-label>
+                <mat-select [(ngModel)]="filters.department" (ngModelChange)="applyFilters()">
+                    <mat-option *ngFor="let department of districts" [value]="department.name">
+                        {{ department.name }}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <!-- Begin Date Filter -->
+            <mat-form-field appearance="fill">
+                <mat-label>Fecha de inicio</mat-label>
+                <input matInput [matDatepicker]="picker1" [(ngModel)]="filters.beginDate" (ngModelChange)="applyFilters()">
+                <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                <mat-datepicker #picker1></mat-datepicker>
+            </mat-form-field>
+
+            <!-- End Date Filter -->
+            <mat-form-field appearance="fill">
+                <mat-label>Fecha de fin</mat-label>
+                <input matInput [matDatepicker]="picker2" [(ngModel)]="filters.endDate" (ngModelChange)="applyFilters()">
+                <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                <mat-datepicker #picker2></mat-datepicker>
+            </mat-form-field>
+
+            <!-- State Filter -->
+            <mat-form-field appearance="fill">
+                <mat-label>Estado</mat-label>
+                <mat-select [(ngModel)]="filters.state" (ngModelChange)="applyFilters()">
+                    <mat-option *ngFor="let state of states" [value]="state.name">
+                        {{ state.name }}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
         </div>
         <div *ngIf="loggedIn" class="flex flex-col gap-y-8 lg:grid lg:grid-cols-4 w-full gap-x-16">
-            <app-event-card *ngFor="let event of events" [title]="event.title" [date]="event.date.beginDate"
-                image="/assets/img/events/placeholderEvent.png"></app-event-card>
+            <app-event-card *ngFor="let event of displayedEvents" [title]="event.title" [date]="event.date.beginDate"
+                image="/assets/img/events/placeholderEvent.png">
+            </app-event-card>
         </div>
+
+        <mat-paginator class="self-center" [length]="events.length" [pageSize]="8" [pageSizeOptions]="[8, 16, 24]">
+        </mat-paginator>
     </div>
 </main>
