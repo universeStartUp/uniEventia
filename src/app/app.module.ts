@@ -4,18 +4,17 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { NgIconComponent } from '@ng-icons/core';
-import { EventCardComponent } from './components/event-card/event-card.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { HomePageComponent } from './components/home-page/home-page.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { EventModule } from './events/event.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    EventCardComponent,
     HomePageComponent,
   ],
   imports: [
@@ -25,6 +24,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AppRoutingModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
+    EventModule
   ],
   providers: [],
   bootstrap: [AppComponent],
