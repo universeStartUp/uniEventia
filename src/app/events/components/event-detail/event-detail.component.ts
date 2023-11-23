@@ -1,19 +1,47 @@
 import { Component, ViewChild, ElementRef, NgZone} from '@angular/core';
+import { IEvent } from 'src/app/interfaces/event';
+import { EventService } from 'src/app/service/event.service';
+import { ActivatedRoute } from '@angular/router';
+import { provideIcons } from '@ng-icons/core';
+import { heroCalendar } from '@ng-icons/heroicons/outline';
 
 declare var google: any;
 
 @Component({
-  selector: 'app-create-event',
-  templateUrl: './create-event.component.html',
+  selector: 'app-event-detail',
+  templateUrl: './event-detail.component.html',
+  providers: [provideIcons({ heroCalendar })],
 })
-export class CreateEventComponent {
+
+export class EventDetailComponent  {
+  event!: IEvent;
   center: google.maps.LatLngLiteral = {lat: 40.7128, lng: -74.0060};
   zoom = 12;
   markers: any[] = [];
 
   private geocoder = new google.maps.Geocoder();
+
   @ViewChild('map') mapElement!: ElementRef;
 
+  constructor(private eventService: EventService, private route: ActivatedRoute) { }
+
+  ngOnInit(): void {
+    this.route.params.subscribe(params => {
+      const eventId = +params['id'];
+      this.loadEvent(eventId);
+    });
+  }
+
+  private loadEvent(id: number): void {
+    this.eventService.getEventById(id).subscribe(event => {
+      this.event = event;
+      this.setMapLocation(event.location.address);
+    });
+  }
+
+  formatDate(date: string): string {
+    return new Date(date).toLocaleDateString();
+  }
 
   private setMapLocation(address: string): void {
     this.geocoder.geocode({ 'address': address }, (results : any, status : any) => {

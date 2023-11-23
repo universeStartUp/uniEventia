@@ -23,12 +23,15 @@
       <input type="text" placeholder="Ingresa el aforo del evento" class="w-full p-2 border font-raleway border-gray-400 rounded-md mb-4">
 
       <!-- Ubicación -->
-      <label class="text-md font-raleway font-bold  mb-1">Ubicación</label>
-      <div class="bg-gray-500 w-full h-32 mb-4 rounded-md">
-        <!-- Aquí iría el mapa de Google Maps -->
-      </div>
-
+      <label class="text-md font-raleway font-bold mb-1">Ubicación</label>
+     <div class="bg-black/30 rounded-md flex flex-col items-start justify-start p-4 text-white text-start w-full">
+        <google-map height="100%" width="100%" [center]="center" [zoom]="zoom">
+            <map-marker *ngFor="let marker of markers" [position]="marker.position" [title]="marker.title">
+            </map-marker>
+        </google-map>
     </div>
+</div>
+
 
 </main>
 

@@ -14,13 +14,16 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { FormsModule } from '@angular/forms';
-
+import { MatIconModule } from '@angular/material/icon';
+import { EventDetailComponent } from './components/event-detail/event-detail.component';
+import { GoogleMapsModule } from '@angular/google-maps'
 
 @NgModule({
   declarations: [
     EventsComponent,
     EventCardComponent,
-    CreateEventComponent
+    CreateEventComponent,
+    EventDetailComponent
   ],
   imports: [
     CommonModule,
@@ -34,7 +37,9 @@ import { FormsModule } from '@angular/forms';
     MatSelectModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    FormsModule
+    FormsModule,
+    MatIconModule,
+    GoogleMapsModule
   ],
   exports: [
     EventCardComponent // Export the components you want to use in other modules
