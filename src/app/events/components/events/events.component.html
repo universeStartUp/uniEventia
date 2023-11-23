@@ -1,1 +1,15 @@
-<p>events works!</p>
+<main class="bg-gradient-to-br from-white to-uni-blue h-full w-full">
+    <div class="flex flex-col w-full px-10 py-4 gap-y-2">
+        <div class="flex flex-row w-full items-center justify-start gap-x-4">
+            <p class="text-base lg:text-2xl font-bold text-center text-black font-poppins">Eventos Destacados</p>
+        </div>
+        <div *ngIf="!loggedIn" class="flex flex-col gap-y-8 lg:grid lg:grid-cols-4 w-full gap-x-16">
+            <app-event-card *ngFor="let event of eventos" [title]="event.title" [date]="event.date"
+                [price]="event.price" [image]="event.image"></app-event-card>
+        </div>
+        <div *ngIf="loggedIn" class="flex flex-col gap-y-8 lg:grid lg:grid-cols-4 w-full gap-x-16">
+            <app-event-card *ngFor="let event of events" [title]="event.title" [date]="event.date.beginDate"
+                image="/assets/img/events/placeholderEvent.png"></app-event-card>
+        </div>
+    </div>
+</main>
