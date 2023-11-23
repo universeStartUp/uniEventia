@@ -1,14 +1,10 @@
 import { Component } from '@angular/core';
-import { provideIcons } from '@ng-icons/core';
-import { heroStarSolid } from '@ng-icons/heroicons/solid';
-import { EventInterface } from '../../interfaces/event.interface';
 import { EventService } from '../../service/event.service';
 import { IEvent } from 'src/app/interfaces/event';
 
 @Component({
   selector: 'app-home-page',
   templateUrl: './home-page.component.html',
-  providers: [provideIcons({ heroStarSolid })],
 })
 export class HomePageComponent {
   constructor(private eventService: EventService) {}

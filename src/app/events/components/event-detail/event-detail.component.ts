@@ -1,21 +1,17 @@
-import { Component, ViewChild, ElementRef, NgZone} from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
 import { IEvent } from 'src/app/interfaces/event';
 import { EventService } from 'src/app/service/event.service';
 import { ActivatedRoute } from '@angular/router';
-import { provideIcons } from '@ng-icons/core';
-import { heroCalendar } from '@ng-icons/heroicons/outline';
 
 declare var google: any;
 
 @Component({
   selector: 'app-event-detail',
   templateUrl: './event-detail.component.html',
-  providers: [provideIcons({ heroCalendar })],
 })
-
-export class EventDetailComponent  {
+export class EventDetailComponent {
   event!: IEvent;
-  center: google.maps.LatLngLiteral = {lat: 40.7128, lng: -74.0060};
+  center: google.maps.LatLngLiteral = { lat: 40.7128, lng: -74.006 };
   zoom = 12;
   markers: any[] = [];
 
@@ -23,17 +19,20 @@ export class EventDetailComponent  {
 
   @ViewChild('map') mapElement!: ElementRef;
 
-  constructor(private eventService: EventService, private route: ActivatedRoute) { }
+  constructor(
+    private eventService: EventService,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
-    this.route.params.subscribe(params => {
+    this.route.params.subscribe((params) => {
       const eventId = +params['id'];
       this.loadEvent(eventId);
     });
   }
 
   private loadEvent(id: number): void {
-    this.eventService.getEventById(id).subscribe(event => {
+    this.eventService.getEventById(id).subscribe((event) => {
       this.event = event;
       this.setMapLocation(event.location.address);
     });
@@ -44,16 +43,18 @@ export class EventDetailComponent  {
   }
 
   private setMapLocation(address: string): void {
-    this.geocoder.geocode({ 'address': address }, (results : any, status : any) => {
+    this.geocoder.geocode({ address: address }, (results: any, status: any) => {
       if (status == google.maps.GeocoderStatus.OK) {
         this.center = {
           lat: results[0].geometry.location.lat(),
-          lng: results[0].geometry.location.lng()
+          lng: results[0].geometry.location.lng(),
         };
         // Optionally, add a marker to the map
         this.addMarker(this.center);
       } else {
-        console.error(`Geocode was not successful for the following reason: ${status}`);
+        console.error(
+          `Geocode was not successful for the following reason: ${status}`
+        );
       }
     });
   }

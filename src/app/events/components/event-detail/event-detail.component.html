@@ -8,7 +8,7 @@
             <div class="bg-black/30 rounded-md flex flex-col items-start justify-start p-4 text-white text-start">
                 <h4 class="text-xl font-bold  font-poppins self-center">{{event ? event.title : ''}}</h4>
                 <div class="flex flex-col gap-y-2">
-                    <p class="text-sm font-regular  font-poppins">{{event ? event.description : ''}}</p>
+                     <p class="text-sm font-regular  font-poppins">{{event ? event.description : ''}}</p>
                     <p class="text-sm font-regular  font-poppins">{{event ? event.location.address : ''}}</p>
                     <div class="flex flex-row justify-center w-full gap-x-6">
                         <div class="flex flex-row gap-x-4 items-center text-black">
@@ -23,7 +23,7 @@
                                 : ''}}</p>
                         </div>
                     </div>
-                    
+
                     <div class="flex flex-row gap-x-4 items-center text-black">
                         <button>
                             <a href="{{event ? event.eventNetwork.facebookURL : '#'}}" target="_blank">
