@@ -13,7 +13,7 @@ declare var google: any;
 })
 export class CreateEventComponent {
   center: google.maps.LatLngLiteral = {lat: -9.226014, lng: -74.939174};
-  zoom = 4;
+  zoom = 12;
   markers: any[] = [];
 
   selectedDepartment: IDepartment | undefined;
@@ -22,6 +22,8 @@ export class CreateEventComponent {
 
   private geocoder = new google.maps.Geocoder();
   @ViewChild('map') mapElement!: ElementRef;
+  @ViewChild('addressInput') addressInput!: ElementRef;
+
   private map!: google.maps.Map;
 
   constructor(private ngZone: NgZone) {}
@@ -71,21 +73,6 @@ export class CreateEventComponent {
     });
   }
 
-  private addMarker(position: google.maps.LatLngLiteral): void {
-    // Clear existing markers
-    this.clearMarkers();
-
-    // Add a new marker
-    const marker = new google.maps.Marker({
-      position: position,
-      map: this.map,
-      title: 'Event Location',
-    });
-
-    // Add the marker to the markers array
-    this.markers.push(marker);
-  }
-
   private clearMarkers(): void {
     // Clear all markers from the map
     this.markers.forEach(marker => {
@@ -105,4 +92,46 @@ export class CreateEventComponent {
     this.selectedDistrict = district;
     this.selectedLocation = undefined; // Clear the selected location when district changes
   }
+
+   ngAfterViewInit() {
+    this.initializeAutocomplete();
+  }
+
+  private initializeAutocomplete(): void {
+    if (!this.addressInput) return;
+
+    const autocomplete = new google.maps.places.Autocomplete(this.addressInput.nativeElement);
+    autocomplete.addListener('place_changed', () => {
+      this.ngZone.run(() => {
+        const place = autocomplete.getPlace();
+        if (!place.geometry) {
+          console.error('Autocomplete\'s returned place contains no geometry');
+          return;
+        }
+        this.updateMapLocation(place.geometry.location);
+      });
+    });
+  }
+
+  private updateMapLocation(location: google.maps.LatLng) {
+    this.center = {
+      lat: location.lat(),
+      lng: location.lng(),
+    };
+    this.addMarker(this.center);
+    this.map.setCenter(this.center);
+  }
+
+  private addMarker(position: google.maps.LatLngLiteral): void {
+    this.clearMarkers(); // Clear existing markers
+  
+    const marker = new google.maps.Marker({
+      position: position,
+      map: this.map,
+      title: 'Event Location',
+    });
+  
+    this.markers.push(marker); // Add the marker to the array
+  }
+  
 }
