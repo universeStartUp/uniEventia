@@ -4,11 +4,11 @@
         <div class="flex flex-row w-full items-center justify-start gap-x-4">
             <img src="assets/img/events/placeholderEvent.png" alt="event image" class="w-full h-72 object-cover">
         </div>
-        <div class="flex flex-row gap-x-6 items-center w-full px-6 py-4">
-            <div class="bg-black/30 rounded-md flex flex-col items-start justify-start p-4 text-white text-start">
+        <div class="flex flex-row gap-x-6 items-start w-full px-6 py-4">
+            <div class="bg-black/30 rounded-md flex flex-col items-start justify-start p-4 text-white text-start h-full ">
                 <h4 class="text-xl font-bold  font-poppins self-center">{{event ? event.title : ''}}</h4>
                 <div class="flex flex-col gap-y-2">
-                    <p class="text-sm font-regular  font-poppins">{{event ? event.description : ''}}</p>
+                     <p class="text-sm font-regular  font-poppins">{{event ? event.description : ''}}</p>
                     <p class="text-sm font-regular  font-poppins">{{event ? event.location.address : ''}}</p>
                     <div class="flex flex-row justify-center w-full gap-x-6">
                         <div class="flex flex-row gap-x-4 items-center text-black">
@@ -23,10 +23,31 @@
                                 : ''}}</p>
                         </div>
                     </div>
+
+                    <div class="flex flex-row gap-x-4 items-center text-black">
+                        <button>
+                            <a href="{{event ? event.eventNetwork.facebookURL : '#'}}" target="_blank">
+                                <ng-icon size="24px" name="bootstrapFacebook"></ng-icon>
+                            </a>
+                        </button>
+                        
+                        <button>
+                            <a href="{{event ? event.eventNetwork.instagramURL : '#'}}" target="_blank">
+                                <ng-icon size="24px" name="bootstrapInstagram"></ng-icon>
+                            </a>
+                        </button>
+                    
+                        <button>
+                            <a href="{{event ? event.eventNetwork.twitterURL : '#'}}" target="_blank">
+                                <ng-icon size="24px" name="bootstrapTwitter"></ng-icon>
+                            </a>
+                        </button>
+                    </div>  
+                   
                 </div>
             </div>
             <div
-                class="bg-black/30 rounded-md flex flex-col items-start justify-start p-4 text-white text-start w-full">
+                class="bg-black/30 rounded-md flex flex-col items-center justify-center p-4 text-white text-start w-fit">
                 <google-map height="400px" width="1000px" [center]="center" [zoom]="zoom">
                     <map-marker *ngFor="let marker of markers" [position]="marker.position" [title]="marker.title">
                     </map-marker>

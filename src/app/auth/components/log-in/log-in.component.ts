@@ -40,6 +40,7 @@ export class LogInComponent implements OnInit {
         next: (response) => {   
           localStorage.setItem('token', response.token);
           localStorage.setItem('user', JSON.stringify(response.userDto));
+          localStorage.setItem('tokenExpiricy', (Date.now() + 1000 * 60 * 24).toString());
           this.router.navigate(['/']);
         },
         error: (error) => {

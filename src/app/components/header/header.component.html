@@ -7,15 +7,15 @@
             <p class="text-xl cursor-pointer">Foro</p>
         </div>
         <div class="lg:flex flex-row gap-x-8 w-full justify-end items-center">
-            <div *ngIf="userExists" class="flex flex-row gap-x-4 items-center">
+            <div *ngIf="getUserExists()" class="flex flex-row gap-x-4 items-center">
                 <p class="text-xl cursor-pointer">Bienvenido de vuelta, {{user.firstName}}</p>
             </div>
 
-            <button *ngIf="!userExists" class="bg-uni-blue hover:bg-white hover:text-black text-white font-bold py-2 px-4 rounded"
+            <button *ngIf="!getUserExists()" class="bg-uni-blue hover:bg-white hover:text-black text-white font-bold py-2 px-4 rounded"
             (click)="goToLogin()">
                 Iniciar sesión
             </button>
-            <button *ngIf="!userExists" class="border border-uni-blue hover:bg-white text-black font-bold py-2 px-4 rounded"
+            <button *ngIf="!getUserExists()" class="border border-uni-blue hover:bg-white text-black font-bold py-2 px-4 rounded"
             (click)="goToRegister()">
                 Registrarse
             </button>

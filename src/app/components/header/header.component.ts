@@ -1,26 +1,42 @@
-import { Component} from '@angular/core';
-import { provideIcons } from '@ng-icons/core';
-import { heroBars3 } from '@ng-icons/heroicons/outline';
+import { Component } from '@angular/core';
 import { IUser } from 'src/app/auth/interfaces/auth.interface';
-import {Router} from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  providers: [provideIcons({ heroBars3 })],
 })
 export class HeaderComponent {
   openDropdown: boolean = false;
-  user : IUser = JSON.parse(localStorage.getItem('user') || '{}');
-  userExists = localStorage.getItem('user') ? true : false;
+  user: IUser = JSON.parse(localStorage.getItem('user') || '{}');
 
-  constructor(private router : Router) {}
+  constructor(private router: Router) { }
+
+  // New method to check if the token is valid
+  isValidToken(): boolean {
+    const expiricy = parseInt(localStorage.getItem('tokenExpiricy')!, 10);
+    if (isNaN(expiricy)) {
+      console.error('Invalid token expiry time');
+      // Handle the error, e.g., by treating the token as expired
+    }
+    const tokenExpiry = new Date(expiricy).getTime();
+    const currentTime = new Date().getTime();
+    console.log(tokenExpiry);
+    console.log(currentTime);
+    console.log(currentTime < tokenExpiry);
+    return currentTime < tokenExpiry;
+  }
+
+  // Method to determine if the user exists based on the valid token
+  getUserExists(): boolean {
+    return this.isValidToken();
+  }
 
   setDropdown() {
     this.openDropdown = !this.openDropdown;
   }
 
-  dropdownOptions = [ 'Inicio', 'Eventos', 'Foro'];
+  dropdownOptions = ['Inicio', 'Eventos', 'Foro'];
 
   goToLogin() {
     this.router.navigate(['/auth/login']);
@@ -30,11 +46,11 @@ export class HeaderComponent {
     this.router.navigate(['/auth/register']);
   }
 
-  goToEventos(){
+  goToEventos() {
     this.router.navigate(['/events/all']);
   }
 
-  goToInicio(){
+  goToInicio() {
     this.router.navigate(['/']);
   }
 }

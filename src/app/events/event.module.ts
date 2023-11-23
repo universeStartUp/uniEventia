@@ -7,23 +7,17 @@ import { EventRoutingModule } from './event-routing.module';
 import { EventCardComponent } from './components/event-card/event-card.component';
 import { CreateEventComponent } from './components/create-event/create-event.component';
 import { SharedModule } from '../shared/shared.module';
-import { MatPaginatorModule } from '@angular/material/paginator';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { MatSelectModule } from '@angular/material/select';
-import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatNativeDateModule } from '@angular/material/core';
 import { FormsModule } from '@angular/forms';
-import { MatIconModule } from '@angular/material/icon';
 import { EventDetailComponent } from './components/event-detail/event-detail.component';
-import { GoogleMapsModule } from '@angular/google-maps'
+import { GoogleMapsModule } from '@angular/google-maps';
+import { MaterialModule } from '../material/material.module';
 
 @NgModule({
   declarations: [
     EventsComponent,
     EventCardComponent,
     CreateEventComponent,
-    EventDetailComponent
+    EventDetailComponent,
   ],
   imports: [
     CommonModule,
@@ -31,18 +25,12 @@ import { GoogleMapsModule } from '@angular/google-maps'
     EventRoutingModule,
     NgIconComponent,
     SharedModule,
-    MatPaginatorModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatSelectModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
     FormsModule,
-    MatIconModule,
-    GoogleMapsModule
+    GoogleMapsModule,
+    MaterialModule,
   ],
   exports: [
-    EventCardComponent // Export the components you want to use in other modules
-  ]
+    EventCardComponent, // Export the components you want to use in other modules
+  ],
 })
-export class EventModule { }
+export class EventModule {}

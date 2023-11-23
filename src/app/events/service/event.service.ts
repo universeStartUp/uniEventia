@@ -1,11 +1,9 @@
 import { Injectable } from '@angular/core';
-import { environment } from '../../environments/environment.prod';
+import { environment } from '../../../environments/environment.prod';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-
 import { IEvent } from '../interfaces/event';
 import { IDateRequestDTO } from '../interfaces/dateRequestDTO';
 import { IEventCategory } from '../interfaces/eventCategory';
-import { EventStateEnum } from '../interfaces/eventState.enum';
 
 @Injectable({
   providedIn: 'root',
@@ -19,7 +17,7 @@ export class EventService {
     Authorization: 'Bearer ' + localStorage.getItem('token'),
   });
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   getAllEvents() {
     return this.http.get<IEvent[]>(this.apiUrl + this.apiURL + '/all', {
@@ -43,8 +41,8 @@ export class EventService {
       {
         headers: {
           Authorization: 'Bearer ' + localStorage.getItem('token'),
-        }
-      },
+        },
+      }
     );
   }
 
@@ -52,7 +50,7 @@ export class EventService {
     return this.http.post<IEvent[]>(
       this.apiUrl + this.apiURL + '/get/date',
       dateRequestDTO,
-      { headers: this.headers },
+      { headers: this.headers }
     );
   }
 
@@ -60,13 +58,13 @@ export class EventService {
     return this.http.post<IEvent[]>(
       this.apiUrl + this.apiURL + '/get/category',
       categories,
-      { headers: this.headers },
+      { headers: this.headers }
     );
   }
   getEventByState(state: string) {
     return this.http.get<IEvent[]>(
       this.apiUrl + this.apiURL + '/get/state/' + state,
-      { headers: this.headers },
+      { headers: this.headers }
     );
   }
 }
