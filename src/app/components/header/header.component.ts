@@ -29,4 +29,12 @@ export class HeaderComponent {
   goToRegister() {
     this.router.navigate(['/auth/register']);
   }
+
+  goToEventos(){
+    this.router.navigate(['/events/all']);
+  }
+
+  goToInicio(){
+    this.router.navigate(['/']);
+  }
 }

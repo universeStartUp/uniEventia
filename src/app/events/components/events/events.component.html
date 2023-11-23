@@ -1,4 +1,4 @@
-<main class="bg-gradient-to-br from-white to-uni-blue h-full w-full">
+<main class="bg-gradient-to-br from-white to-uni-blue w-full">
     <app-header></app-header>
     <div class="flex flex-col w-full px-10 py-4 gap-y-2">
         <div class="flex flex-row w-full items-center justify-start gap-x-4">
@@ -12,6 +12,7 @@
             <mat-form-field appearance="fill">
                 <mat-label>Categoría</mat-label>
                 <mat-select [(ngModel)]="filters.category" (ngModelChange)="applyFilters()">
+                    <mat-option value="">Todos las categorías</mat-option> <!-- Clear option -->
                     <mat-option *ngFor="let category of categories" [value]="category.name">
                         {{ category.name }}
                     </mat-option>
@@ -21,7 +22,8 @@
             <!-- Department Filter -->
             <mat-form-field appearance="fill">
                 <mat-label>Departamento</mat-label>
-                <mat-select [(ngModel)]="filters.department" (ngModelChange)="applyFilters()">
+                <mat-select [(ngModel)]="filters.district" (ngModelChange)="applyFilters()">
+                    <mat-option value="">Todos las distritos</mat-option> <!-- Clear option -->
                     <mat-option *ngFor="let department of districts" [value]="department.name">
                         {{ department.name }}
                     </mat-option>
@@ -34,7 +36,10 @@
                 <input matInput [matDatepicker]="picker1" [(ngModel)]="filters.beginDate" (ngModelChange)="applyFilters()">
                 <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
                 <mat-datepicker #picker1></mat-datepicker>
-            </mat-form-field>
+              </mat-form-field>
+              <button mat-button *ngIf="filters.beginDate" matSuffix mat-icon-button aria-label="Clear" (click)="filters.beginDate=''; applyFilters()">
+                <mat-icon>close</mat-icon>
+              </button>
 
             <!-- End Date Filter -->
             <mat-form-field appearance="fill">
@@ -43,11 +48,15 @@
                 <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
                 <mat-datepicker #picker2></mat-datepicker>
             </mat-form-field>
+            <button mat-button *ngIf="filters.endDate" matSuffix mat-icon-button aria-label="Clear" (click)="filters.endDate=''; applyFilters()">
+                <mat-icon>close</mat-icon>
+              </button>
 
             <!-- State Filter -->
             <mat-form-field appearance="fill">
                 <mat-label>Estado</mat-label>
                 <mat-select [(ngModel)]="filters.state" (ngModelChange)="applyFilters()">
+                    <mat-option value="">Todos los estados</mat-option> <!-- Clear option -->
                     <mat-option *ngFor="let state of states" [value]="state.name">
                         {{ state.name }}
                     </mat-option>
