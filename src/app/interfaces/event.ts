@@ -1,15 +1,17 @@
-import {IDate} from './date';
-import {ILocation} from "./location";
-import {IEventCategory} from "./eventCategory";
-import {IEventState} from "./eventState";
+import { IDate } from './date';
+import { ILocation } from './location';
+import { IEventCategory } from './eventCategory';
+import { IEventState } from './eventState';
+import { IEventNetwork } from './eventNetwork';
 
 export interface IEvent {
-  id: number
+  id: number;
   title: string;
   description: string;
   date: IDate;
   location: ILocation;
   eventCategories: IEventCategory[];
   eventState: IEventState;
-  image? : string;
+  eventNetwork: IEventNetwork;
+  image?: string;
 }

@@ -23,6 +23,33 @@
                                 : ''}}</p>
                         </div>
                     </div>
+                    
+                    <div class="flex flex-row gap-x-4 items-center text-black">
+                        <button>
+                            <a href="{{event ? event.eventNetwork.facebookURL : '#'}}" target="_blank">
+                                <span class="material-icons">
+                                    person
+                                    </span> 
+                            </a>
+                        </button>
+                        
+                        <button>
+                            <a href="{{event ? event.eventNetwork.instagramURL : '#'}}" target="_blank">
+                                <span class="material-icons">
+                                    photo_camera
+                                    </span>
+                            </a>
+                        </button>
+                    
+                        <button>
+                            <a href="{{event ? event.eventNetwork.twitterURL : '#'}}" target="_blank">
+                                <span class="material-icons">
+                                    flutter_dash
+                                    </span>
+                            </a>
+                        </button>
+                    </div>  
+                   
                 </div>
             </div>
             <div
