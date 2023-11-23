@@ -1,1 +1,38 @@
-<p>create-event works!</p>
+<main class="bg-gradient-to-br from-white to-uni-blue h-screen w-full flex items-center justify-center">
+
+  <!-- Rectángulo principal -->
+  <div class="bg-gray-500 p-8 w-96 rounded-md font-sans">
+
+      <!-- Contenido del rectángulo -->
+      <label class="text-3xl font-raleway font-bold mb-2">¡Publica un Evento!</label>
+      <label class="text-gray-400 font-raleway text-md mb-4 block">Registra tu evento y comienza a compartirlo</label>
+
+      <!-- Pequeño cuadrado azul -->
+      <div class="bg-blue-500 w-16 h-2 mb-4 rounded-md"></div>
+
+      <!-- Nombre del evento -->
+      <label class="text-md font-raleway font-bold mb-1">Nombre del evento</label>
+      <input type="text" placeholder="Ingresa el nombre del evento" class="w-full p-2 border font-raleway border-gray-400 rounded-md mb-4">
+
+      <!-- Fecha -->
+      <label class="text-md font-raleway font-bold mb-1">Fecha</label>
+      <input type="text" placeholder="Ingresa la fecha del evento" class="w-full p-2 border font-raleway border-gray-400 rounded-md mb-4">
+
+      <!-- Aforo -->
+      <label class="text-md font-raleway font-bold mb-1">Aforo</label>
+      <input type="text" placeholder="Ingresa el aforo del evento" class="w-full p-2 border font-raleway border-gray-400 rounded-md mb-4">
+
+      <!-- Ubicación -->
+      <label class="text-md font-raleway font-bold mb-1">Ubicación</label>
+      <div class="bg-black/30 rounded-md flex flex-col items-start justify-start p-4 text-white text-start w-full">
+          <google-map height="210" width="290" [center]="center" [zoom]="zoom">
+              <map-marker *ngFor="let marker of markers" [position]="marker.position" [title]="marker.title">
+              </map-marker>
+          </google-map>
+      </div>
+  </div>
+
+</main>
+
+     
+
