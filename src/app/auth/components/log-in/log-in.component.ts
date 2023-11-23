@@ -12,8 +12,9 @@ import { Router } from '@angular/router';
 })
 export class LogInComponent implements OnInit {
   loginForm!: FormGroup;
+  errorMessage: string = '';
 
-  constructor(private authService: AuthService, private formBuilder: FormBuilder, private router : Router) {}
+  constructor(private authService: AuthService, private formBuilder: FormBuilder, private router: Router) { }
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
@@ -28,14 +29,14 @@ export class LogInComponent implements OnInit {
     if (this.loginForm.valid) {
       const payload: ILogInCredentials = this.loginForm.value;
       this.authService.login(payload).subscribe({
-        next: (response) => {   
+        next: (response) => {
           localStorage.setItem('token', response.token);
           localStorage.setItem('user', JSON.stringify(response.userDto));
           this.router.navigate(['/']);
         },
         error: (error) => {
-          // Handle error
-          console.error('Registration failed', error);
+          this.errorMessage = 'Email or password are incorrect';
+          console.error('Login failed', error);
         }
       });
     } else {

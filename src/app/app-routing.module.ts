@@ -11,6 +11,10 @@ const routes: Routes = [
     path: 'auth',
     loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)
   },
+  {
+    path: 'events',
+    loadChildren: () => import('./events/event.module').then(m => m.EventModule)
+  },
   // ... other routes, if any
 ];
 

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { environment } from '../../environments/environment';
+import { environment } from '../../environments/environment.prod';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { Event } from '../interfaces/event';
@@ -16,7 +16,7 @@ export class EventService {
   private apiURL = '/api/v1/events';
 
   private headers = new HttpHeaders({
-    Authorization: 'Bearer ' + this.apiKey,
+    Authorization: 'Bearer ' + localStorage.getItem('token'),
   });
 
   constructor(private http: HttpClient) {}

@@ -23,6 +23,9 @@
                     class="border rounded-md px-3 py-2"
                     [placeholder]="loginForm.get('password')?.invalid && loginForm.get('password')?.touched ? 'Password is required' : 'Contraseña'">
             </div>
+            <div *ngIf="errorMessage" class="mb-4 p-3 bg-red-100 text-red-800 rounded">
+                {{ errorMessage }}
+              </div>
             <!-- Submit Button -->
             <button type="submit"
                 class="bg-uni-blue hover:bg-uni-green shadow shadow-black/50 text-white px-4 py-2 rounded-md">Login</button>
