@@ -11,4 +11,5 @@ export interface IEvent {
   location: ILocation;
   eventCategories: IEventCategory[];
   eventState: IEventState;
+  image? : string;
 }

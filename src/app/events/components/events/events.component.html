@@ -64,7 +64,7 @@
             </mat-form-field>
         </div>
         <div *ngIf="loggedIn" class="flex flex-col gap-y-8 lg:grid lg:grid-cols-4 w-full gap-x-16">
-            <app-event-card *ngFor="let event of displayedEvents" [title]="event.title" [date]="event.date.beginDate"
+            <app-event-card *ngFor="let event of displayedEvents" [event]="event"
                 image="/assets/img/events/placeholderEvent.png">
             </app-event-card>
         </div>

@@ -9,13 +9,12 @@
       <p class="text-base lg:text-2xl font-bold text-center text-black font-poppins">Eventos Destacados</p>
     </div>
     <div *ngIf="!loggedIn" class="flex flex-col gap-y-8 lg:grid lg:grid-cols-4 w-full gap-x-16">
-      <app-event-card *ngFor="let event of eventos" [title]="event.title" [date]="event.date" [price]="event.price"
-        [image]="event.image"></app-event-card>
+      <app-event-card *ngFor="let event of eventos" [event]="event"
+        [image]="event.image!"></app-event-card>
     </div>
     <div *ngIf="loggedIn" class="flex flex-col gap-y-8 lg:grid lg:grid-cols-4 w-full gap-x-16">
       <app-event-card *ngFor="let event of events" 
-      [title]="event.title" 
-      [date]="event.date.beginDate" 
+      [event]="event" 
       image="/assets/img/events/placeholderEvent.png"></app-event-card>
     </div>
   </div>
