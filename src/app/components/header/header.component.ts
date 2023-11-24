@@ -53,4 +53,8 @@ export class HeaderComponent {
   goToInicio() {
     this.router.navigate(['/']);
   }
+
+  goToCreateEvent() {
+    this.router.navigate(['/events/create']);
+  }
 }
