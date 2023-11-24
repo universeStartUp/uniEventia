@@ -1,0 +1,92 @@
+<div class="flex flex-col w-full h-full bg-white border border-black shadow-black/50 shadow-md rounded-lg">
+    <form [formGroup]="updateForm" (ngSubmit)="onSubmit()" class="flex flex-col w-full font-poppins">
+        <!-- Surname Field -->
+        <div class="mb-4 w-full flex flex-col">
+            <label 
+                for="surname" 
+                class="block text-black font-semibold">
+                Nombre de usuario
+            </label>
+            <input 
+                type="text" 
+                id="surname" 
+                [class]="{'border-red-500': updateForm.get('surname')?.invalid && updateForm.get('surname')?.touched}"
+                class="border rounded-md px-3 py-2"
+                [placeholder]="updateForm.get('surname')?.invalid && updateForm.get('surname')?.touched ? 'Nombre de usuario es requerido' : 'Nombre de usuario'">
+        </div>
+        <!-- First Name Field -->
+        <div class="mb-4 w-full flex flex-col">
+            <label 
+                for="firstName" 
+                class="block text-black font-semibold">
+                Nombre
+            </label>
+            <input 
+                type="text" 
+                id="firstName" 
+                [class]="{'border-red-500': updateForm.get('firstName')?.invalid && updateForm.get('firstName')?.touched}"
+                class="border rounded-md px-3 py-2"
+                [placeholder]="updateForm.get('firstName')?.invalid && updateForm.get('firstName')?.touched ? 'Nombre es requerido' : 'Nombre'">
+        </div>
+        <!-- Last Name Field -->
+        <div class="mb-4 w-full flex flex-col">
+            <label 
+                for="lastName"
+                class="block text-black font-semibold">
+                Apellido
+            </label>
+            <input 
+                type="text" 
+                id="lastName" 
+                [class]="{'border-red-500': updateForm.get('lastName')?.invalid && updateForm.get('lastName')?.touched}"
+                class="border rounded-md px-3 py-2"
+                [placeholder]="updateForm.get('lastName')?.invalid && updateForm.get('lastName')?.touched ? 'Apellido es requerido' : 'Apellido'">
+        </div>
+        <!-- Student Code Field -->
+        <div class="mb-4 w-full flex flex-col">
+            <label 
+                for="studentCode" 
+                class="block text-black font-semibold">
+                Código de alumno
+            </label>
+            <input 
+                type="text" 
+                id="studentCode" 
+                [class]="{'border-red-500': updateForm.get('studentCode')?.invalid && updateForm.get('studentCode')?.touched}"
+                class="border rounded-md px-3 py-2"
+                [placeholder]="updateForm.get('studentCode')?.invalid && updateForm.get('studentCode')?.touched ? 'Código de alumno es requerido' : 'Código de alumno'">
+        </div>
+        <!-- Email Address Field -->
+        <div class="mb-4 w-full flex flex-col">
+            <label 
+                for="emailAddress" 
+                class="block text-black font-semibold">
+                Correo
+            </label>
+            <input 
+                type="email" 
+                id="emailAddress" 
+                formControlName="emailAddress"
+                [class]="{'border-red-500': updateForm.get('emailAddress')?.invalid && updateForm.get('emailAddress')?.touched}"
+                class="border rounded-md px-3 py-2"
+                [placeholder]="updateForm.get('emailAddress')?.invalid && updateForm.get('emailAddress')?.touched ? 'Correo es requerido' : 'Correo'">
+        </div>
+        <!-- Password Field -->
+        <div class="mb-4 w-full flex flex-col">
+            <label 
+                for="password" 
+                class="block text-black font-semibold">
+                Contraseña
+            </label>
+            <input type="password" id="password" formControlName="password"
+                [class]="{'border-red-500': updateForm.get('password')?.invalid && updateForm.get('password')?.touched}"
+                class="border rounded-md px-3 py-2"
+                [placeholder]="updateForm.get('password')?.invalid && updateForm.get('password')?.touched ? 'Contraseña es requerida' : 'Contraseña'">
+        </div>
+        <!-- Submit Button -->
+        <button type="submit"
+            class="bg-uni-blue hover:bg-uni-green shadow shadow-black/50 text-white px-4 py-2 rounded-md">
+            Guardar Cambios
+        </button>
+    </form>
+</div>

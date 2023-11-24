@@ -9,8 +9,8 @@ import { environment } from 'src/environments/environment.prod';
 })
 
 export class AuthService {
-  private loginUrl = environment.apiUrl  + '/auth/signin'; // URL to web api for login
-  private registerUrl = environment.apiUrl  + '/auth/signup'; // URL to web api for registration
+  private loginUrl = environment.apiUrl  + '/auth/signin';
+  private registerUrl = environment.apiUrl  + '/auth/signup';
 
   constructor(private http: HttpClient) { }
 

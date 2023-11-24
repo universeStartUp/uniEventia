@@ -12,6 +12,7 @@ import { EventModule } from './events/event.module';
 import { SharedModule } from './shared/shared.module';
 import { IconsModule } from './icons/icons.module';
 import { MaterialModule } from './material/material.module';
+import { StudentModule } from './student/student.module';
 
 @NgModule({
   declarations: [AppComponent, HomePageComponent],
@@ -26,6 +27,7 @@ import { MaterialModule } from './material/material.module';
     SharedModule,
     IconsModule,
     MaterialModule,
+    StudentModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
